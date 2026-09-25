@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:15.17-trixie
+    container_name: tfg_postgres
+    restart: always
+    
+    environment:
+      POSTGRES_USER: tfg_user
+      POSTGRES_PASSWORD: tfg_pass
+      POSTGRES_DB: tfg_movies
+     
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      
+    ports:
+      - "55432:5432"
+      
+    shm_size: 128mb
+
+volumes:
+  pgdata:
